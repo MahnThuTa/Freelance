@@ -17,12 +17,12 @@
     <table width="20%">
       <tbody>
         <tr>
-          <td><label for="newName">Name:</label></td>
-          <td><input type="text" id="newName"></td>
+          <td><label for="new_name">Name:</label></td>
+          <td><input type="text" id="new_name"></td>
         </tr>
         <tr>
-          <td><label for="newAge">Age:</label></td>
-          <td><input type="number" id="newAge"></td>
+          <td><label for="new_age">Age:</label></td>
+          <td><input type="number" id="new_age" max="130" min="1"></td>
         </tr>
       </tbody>
     </table>
@@ -43,23 +43,31 @@
     var rowCount = 1;
 
     function updateTable() {
-      var newName = document.getElementById("newName").value;
-      var newAge = document.getElementById("newAge").value;
+      // Get input
+      var new_name = document.getElementById("new_name").value;
+      var new_age = document.getElementById("new_age").value;
 
-      if (newName && newAge) {
-        var table = document.getElementById("mytable");
-        var newRow = table.insertRow();
-        var num_insert = newRow.insertCell(0);
-        var name_insert = newRow.insertCell(1);
-        var age_insert = newRow.insertCell(2);
+      // Get table
+      if (new_name && new_age) {
+        if (new_age >= 1 && new_age <= 130){
+          var table = document.getElementById("mytable");
+
+          // Insert Row
+          var new_row = table.insertRow();
+          var num_insert = new_row.insertCell(0);
+          var name_insert = new_row.insertCell(1);
+          var age_insert = new_row.insertCell(2);
 
 
-        num_insert.innerHTML = rowCount++;
-        name_insert.innerHTML = newName;
-        age_insert.innerHTML = newAge;
+          num_insert.innerHTML = rowCount++;
+          name_insert.innerHTML = new_name;
+          age_insert.innerHTML = new_age;
 
-        document.getElementById("newName").value = "";
-        document.getElementById("newAge").value = "";
+          document.getElementById("new_name").value = "";
+          document.getElementById("new_age").value = "";
+        } else {
+          alert("Enter age between 1 and 130 inclusive")
+        }
       } else {
         alert("Enter Name and Age.")
       }
