@@ -47,28 +47,40 @@
       var new_name = document.getElementById("new_name").value;
       var new_age = document.getElementById("new_age").value;
 
-      // Get table
+
+      // Name validate
+      var regex = /^[a-zA-Z]+$/;
+      var validate = console.log(regex.test(new_name))
+
       if (new_name && new_age) {
-        if (new_age >= 1 && new_age <= 130){
-          var table = document.getElementById("mytable");
+        if (validate) {
+          if (new_age >= 1 && new_age <= 130) {
+            // Get table
+            var table = document.getElementById("mytable");
 
-          // Insert Row
-          var new_row = table.insertRow();
-          var num_insert = new_row.insertCell(0);
-          var name_insert = new_row.insertCell(1);
-          var age_insert = new_row.insertCell(2);
+            // Insert Row
+            var new_row = table.insertRow();
+            var num_insert = new_row.insertCell(0);
+            var name_insert = new_row.insertCell(1);
+            var age_insert = new_row.insertCell(2);
 
 
-          num_insert.innerHTML = rowCount++;
-          name_insert.innerHTML = new_name;
-          age_insert.innerHTML = new_age;
+            num_insert.innerHTML = rowCount++;
+            name_insert.innerHTML = new_name;
+            age_insert.innerHTML = new_age;
 
-          document.getElementById("new_name").value = "";
-          document.getElementById("new_age").value = "";
-        } else {
-          alert("Enter age between 1 and 130 inclusive")
+            document.getElementById("new_name").value = "";
+            document.getElementById("new_age").value = "";
+          } 
+          else {
+            alert("Enter age between 1 and 130 inclusive.")
+          }
         }
-      } else {
+        else {
+          alert("Enter a valid name.")
+        }
+      } 
+      else {
         alert("Enter Name and Age.")
       }
     }
