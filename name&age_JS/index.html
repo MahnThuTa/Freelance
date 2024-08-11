@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name&Age</title>
+</head>
+<style>
+  table, td {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <div>
+    <table width="20%">
+      <tbody>
+        <tr>
+          <td><label for="new_name">Name:</label></td>
+          <td><input type="text" id="new_name"></td>
+        </tr>
+        <tr>
+          <td><label for="new_age">Age:</label></td>
+          <td><input type="number" id="new_age" max="130" min="1"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div><br>
+
+  <button onclick="updateTable()">Add</button>
+
+  <p>&nbsp;</p>
+
+  <table width="40%" border="1" cellpadding="5" cellspacing="0" id="mytable">
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </table>
+  <script>
+    var rowCount = 1;
+
+    function updateTable() {
+      // Get input
+      var new_name = document.getElementById("new_name").value;
+      var new_age = document.getElementById("new_age").value;
+
+
+      // Name validate
+      var regex = /^[a-zA-Z]+$/;
+      var validate = console.log(regex.test(new_name))
+
+      if (new_name && new_age) {
+        if (validate) {
+          if (new_age >= 1 && new_age <= 130) {
+            // Get table
+            var table = document.getElementById("mytable");
+
+            // Insert Row
+            var new_row = table.insertRow();
+            var num_insert = new_row.insertCell(0);
+            var name_insert = new_row.insertCell(1);
+            var age_insert = new_row.insertCell(2);
+
+
+            num_insert.innerHTML = rowCount++;
+            name_insert.innerHTML = new_name;
+            age_insert.innerHTML = new_age;
+
+            document.getElementById("new_name").value = "";
+            document.getElementById("new_age").value = "";
+          } 
+          else {
+            alert("Enter age between 1 and 130 inclusive.")
+          }
+        }
+        else {
+          alert("Enter a valid name.")
+        }
+      } 
+      else {
+        alert("Enter Name and Age.")
+      }
+    }
+  </script>
+</body>
+</html>
