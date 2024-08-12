@@ -19,7 +19,7 @@ LIMIT 1;
 -- 4
 SELECT Odate, MAX(Amount) AS highestAmount
 FROM orders
-GROUP BY o_date;
+GROUP BY Odate;
 
 -- 5
 SELECT Rating, Cname, Cnum
