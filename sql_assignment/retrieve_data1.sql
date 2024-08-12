@@ -45,6 +45,7 @@ WHERE Comm NOT IN (0.10, 0.13, 0.15);
 -- 10
 SELECT *
 FROM customers
+ORDER BY Cname ASC
 LIMIT 3;
 
 -- 11

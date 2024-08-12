@@ -3,7 +3,7 @@ USE shopData;
 -- 1
 SELECT COUNT(*)
 FROM orders
-WHERE Snum = 1001 AND Amount > 1500;
+WHERE Snum = 1001 AND Amt > 1500;
 
 -- 2
 SELECT COUNT(Cname)
@@ -13,11 +13,11 @@ WHERE City = "London";
 -- 3
 SELECT *
 FROM orders
-ORDER BY Amount
+ORDER BY Amt
 LIMIT 1;
 
 -- 4
-SELECT Odate, MAX(Amount) AS highestAmount
+SELECT Odate, MAX(Amt) AS highestAmount
 FROM orders
 GROUP BY Odate;
 
